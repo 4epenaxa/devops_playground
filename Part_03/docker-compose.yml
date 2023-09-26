@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  server:
+    build: .
+
+  proxy:
+    image: nginx:latest
+    ports:
+      - "80:8080"
+    volumes:
+      - ./compose/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - server

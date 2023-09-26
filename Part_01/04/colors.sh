@@ -1,0 +1,16 @@
+#!/bin/bash
+BLACK='\033[30m'
+RED='\033[31m'
+GREEN='\033[32m'
+BLUE='\033[34m'
+PURPLE='\033[35m'
+WHITE='\033[37m'
+
+BGBLACK='\033[40m'
+BGRED='\033[41m'
+BGGREEN='\033[42m'
+BGBLUE='\033[44m'
+BGPURPLE='\033[45m'
+BGWHITE='\033[47m'
+
+resetColor='\033[0m'
