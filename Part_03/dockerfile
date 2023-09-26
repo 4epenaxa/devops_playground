@@ -1,0 +1,39 @@
+FROM ubuntu/nginx
+WORKDIR /home/
+
+COPY ./docker/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/miniserver.c /home/miniserver.c
+COPY ./docker/shellrun.sh /home/shellrun.sh
+
+RUN chmod +x ./shellrun.sh
+
+RUN apt-get update; \
+    apt-get install -y gcc spawn-fcgi libfcgi-dev; \
+    apt-get clean; \
+    rm -rf /var/lib/apt/lists/*
+
+RUN chmod 777 /var/log/nginx/error.log; \
+    chmod 777 /home/miniserver.c; \
+    chown -R nginx:nginx /home/; \
+    chown -R nginx:nginx /etc/nginx/; \
+    chown -R nginx:nginx /var/lib/nginx/; \
+    chown -R nginx:nginx /var/log/nginx/; \
+    touch /run/nginx.pid; \
+    chown -R nginx:nginx /run/nginx.pid; \
+    chmod 755 /usr/bin/mount; \
+	chmod 755 /usr/bin/gpasswd; \
+	chmod 255 /usr/bin/expiry; \
+	chmod 255 /usr/sbin/pam_extrausers_chkpwd; \
+	chmod 755 /usr/bin/newgrp; \
+	chmod 255 /usr/bin/chage; \
+	chmod 755 /usr/bin/chfn; \
+	chmod 755 /usr/bin/chsh; \
+	chmod 755 /usr/bin/su; \
+	chmod 755 /usr/bin/umount; \
+	chmod 255 /usr/sbin/unix_chkpwd; \
+	chmod 255 /usr/bin/wall; \
+	chmod 755 /usr/bin/passwd
+
+USER nginx
+
+ENTRYPOINT ["sh", "./shellrun.sh"]
