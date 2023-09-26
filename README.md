@@ -27,14 +27,14 @@ A small collection of DevOps tasks. Scripts for working with system information 
 ## Part 1.1 First effort
 **Task:**
 
-Write a bash script. The script is run with one parameter. It is a text parameter.  
-The script outputs the value of the parameter.  
-If the parameter is a number, the script must output an invalid input message.
++ Write a bash script. The script is run with one parameter. It is a text parameter.  
++ The script outputs the value of the parameter.  
++ If the parameter is a number, the script must output an invalid input message.
 
 ## Part 1.2. System research
 **Task:**
 
-Write a bash script. The script should output the following information:
++ Write a bash script. The script should output the following information:
 
 **HOSTNAME** = _network name_  
 **TIMEZONE** = _time zone as: **America/New_York UTC -5** (time zone must be taken from the system and be correct for the current location)_  
@@ -53,35 +53,35 @@ Write a bash script. The script should output the following information:
 **SPACE_ROOT_USED** = _size of used space of the root partition in MB, with an accuracy of two decimal places_  
 **SPACE_ROOT_FREE** = _size of free space of the root partition in MB, with an accuracy of two decimal places_
 
-After outputting the values, suggest writing the data to a file (ask the user to answer **Y/N**).  
++ After outputting the values, suggest writing the data to a file (ask the user to answer **Y/N**).  
 Responses **Y** and **y** are considered positive, all others - negative.
 
-If the user agrees, create a file in the current directory containing the information that had been outputted.
++ If the user agrees, create a file in the current directory containing the information that had been outputted.
 The file name must looks like: **DD_MM_YY_HH_MM_SS.status** (The time in the file name must indicate when the data was saved).
 
 ## Part 1.3. Visual output design for the system research script
 **Task:**
 
-Write a bash script. Use the script from [**Part 1.2**](#part-12-system-research) and remove the part where the data is saved to a file.  The script is run with 4 parameters. The parameters are numeric. From 1 to 6, for example:  
++ Write a bash script. Use the script from [**Part 1.2**](#part-12-system-research) and remove the part where the data is saved to a file.  The script is run with 4 parameters. The parameters are numeric. From 1 to 6, for example:  
 `script03.sh 1 3 4 5`
 
-Color designations: (1 - white, 2 - red, 3 - green, 4 - blue, 5 - purple, 6 - black)
++ Color designations: (1 - white, 2 - red, 3 - green, 4 - blue, 5 - purple, 6 - black)
 
 **Parameter 1** is the background of the value names (HOSTNAME, TIMEZONE, USER etc.)  
 **Parameter 2** is the font color of the value names (HOSTNAME, TIMEZONE, USER etc.)  
 **Parameter 3** is the background of the values (after the '=' sign)  
 **Parameter 4** is the font color of the values (after the '=' sign)
 
-The font and background colors of one column must not match.  
++ The font and background colors of one column must not match.  
 If matching values are entered, there must be a message describing the problem and offering to call the script again.
 After the message output, the program should exit correctly.
 
 ## Part 1.4. Configuring visual output design for the system research script
 **Task:**
 
-Write a bash script. Use the script from [**Part 1.3.**](#part-13-visual-output-design-for-the-system-research-script). The color designations are similar. The script runs without parameters. The parameters are set in the configuration file before the script is running.
++ Write a bash script. Use the script from [**Part 1.3.**](#part-13-visual-output-design-for-the-system-research-script). The color designations are similar. The script runs without parameters. The parameters are set in the configuration file before the script is running.
 
-This is how the configuration file must look like:
++ This is how the configuration file must look like:
 ```
 column1_background=2
 column1_font_color=4
@@ -89,9 +89,9 @@ column2_background=5
 column2_font_color=1
 ```
 
-If one or more parameters are not set in the configuration file, the color must be substituted from the default color scheme. (Choice is at the developer's discretion).
++ If one or more parameters are not set in the configuration file, the color must be substituted from the default color scheme. (Choice is at the developer's discretion).
 
-After the system information output from [**Part 1.3.**](#part-13-visual-output-design-for-the-system-research-script), you should output the color scheme by indenting one empty line as follows:
++ After the system information output from [**Part 1.3.**](#part-13-visual-output-design-for-the-system-research-script), you should output the color scheme by indenting one empty line as follows:
 ```
 Column 1 background = 2 (red)
 Column 1 font color = 4 (blue)
@@ -99,7 +99,7 @@ Column 2 background = 5 (purple)
 Column 2 font color = 1 (white)
 ```
 
-When running the script with the default color scheme, the output should look like this:
++ When running the script with the default color scheme, the output should look like this:
 ```
 Column 1 background = default (black)
 Column 1 font color = default (white)
@@ -110,18 +110,18 @@ Column 2 font color = default (blue)
 ## Part 1.5. File system research
 **Task:**
 
-Write a bash script. The script is run with a single parameter.  
++ Write a bash script. The script is run with a single parameter.  
 The parameter is an absolute or relative path to a directory. The parameter must end with '/', for example:  
 `script05.sh /var/log/`
 
-The script must output the following information about the directory specified in the parameter:
-- Total number of folders, including sub-folders
-- Top 5 folders with largest size in descending order (path and size)
-- Total number of files
-- Number of configuration files (with .conf extension), text files, executable files, log files (files with .log extension), archives, symbolic links
-- Top 10 files with largest size in descending order (path, size and type)
-- Top 10 executable files with largest size in descending order (path, size and hash)
-- Execution time of the script
++ The script must output the following information about the directory specified in the parameter:
+    + Total number of folders, including sub-folders
+    + Top 5 folders with largest size in descending order (path and size)
+    - Total number of files
+    - Number of configuration files (with .conf extension), text files, executable files, log files (files with .log extension), archives, symbolic links
+    - Top 10 files with largest size in descending order (path, size and type)
+    - Top 10 executable files with largest size in descending order (path, size and hash)
+    - Execution time of the script
 
 The script should output the following information:
 
@@ -237,58 +237,57 @@ Specify in the comments of your script/program what each of the response codes u
 ## Part 2.5. Monitoring
 **Task:**
 
-Write a bash script to parse **nginx** logs from [Part 2.4.](#part-24-log-generator) via **awk**.
-The script is run with 1 parameter, which has a value of 1, 2, 3 or 4.
+- Write a bash script to parse **nginx** logs from [Part 2.4.](#part-24-log-generator) via **awk**.
+- The script is run with 1 parameter, which has a value of 1, 2, 3 or 4.
 
-Depending on the value of the parameter, output the following:
-
-1. All entries sorted by response code
-2. All unique IPs found in the entries
-3. All requests with errors (response code - 4xx or 5xxx)
-4. All unique IPs found among the erroneous requests
+- Depending on the value of the parameter, output the following:
+- 1. All entries sorted by response code
+- 2. All unique IPs found in the entries
+- 3. All requests with errors (response code - 4xx or 5xxx)
+- 4. All unique IPs found among the erroneous requests
 
 ## Part 2.6. **GoAccess**
 **Task:**
 
-Use the GoAccess utility to get the same information as in [Part 2.5.](#part-25-monitoring)
-Open the web interface of the utility on the local machine.
+- Use the GoAccess utility to get the same information as in [Part 2.5.](#part-25-monitoring)
+- Open the web interface of the utility on the local machine.
 
 ## Part 2.7. **Prometheus**, **Grafana** and **my own script**
 **Task:**
 
-##### Install and configure **Prometheus** and **Grafana** with docker compose
-##### Access the **Prometheus** and **Grafana** web interfaces from a local machine
-##### Add to the **Grafana** your own dashboard a display of CPU, available RAM, free space and the number of I/O operations on the hard disk.
-#####
-##### Run your bash script from [Part 2.2.](#part-22-file-system-clogging)
-##### Check the hard disk load (disk space and read/write operations)
-##### Install the **stress** utility and run the following command `stress -c 2 -i 1 -m 1 --vm-bytes 32M -t 10s`
-##### Check the hard disk, RAM and CPU load
-#####
-##### Download the ready-made dashboard *Node Exporter Quickstart and Dashboard* from **Grafana Labs** official website.
-##### Run the same tests
-#####
-##### Run a network load test using for example **iperf3**
-##### Check the network interface load
+- Install and configure **Prometheus** and **Grafana** with docker compose
+- Access the **Prometheus** and **Grafana** web interfaces from a local machine
+- Add to the **Grafana** your own dashboard a display of CPU, available RAM, free space and the number of I/O operations on the hard disk.  
+
+- Run your bash script from [Part 2.2.](#part-22-file-system-clogging)
+- Check the hard disk load (disk space and read/write operations)
+- Install the **stress** utility and run the following command `stress -c 2 -i 1 -m 1 --vm-bytes 32M -t 10s`
+- Check the hard disk, RAM and CPU load  
+
+- Download the ready-made dashboard *Node Exporter Quickstart and Dashboard* from **Grafana Labs** official website.
+- Run the same tests  
+
+- Run a network load test using for example **iperf3**
+- Check the network interface load
 
 **Bonus Task**
-
+  
 Write a bash script or a C program that collects information on basic system metrics (CPU, RAM, hard disk (capacity)). The script or a program should make a html page in **Prometheus** format, which will be served by **nginx**. \
 The page itself can be refreshed within a bash script or a program (in a loop), or using the cron utility, but not more often than every 3 seconds.
 
-##### Change the **Prometheus** configuration file so it collects information from the page you created.
-##### Run the same tests
+- Change the **Prometheus** configuration file so it collects information from the page you created.
+- Run the same tests
 
 ## Part 3. Basic **Docker Compose** with mini server inside **nginx** 
 **Task:**
 
-##### Write a mini server in **C** and **FastCgi** that will return a simple page saying `Hello World!`
-##### Run the written mini server via *spawn-fcgi* on port 8080
-##### Write your own *nginx.conf* that will proxy all requests from port 81 to *127.0.0.1:8080*
-##### Add proxying of */status* page in *./nginx/nginx.conf* to return the **nginx** server status
-##### Write a *docker-compose.yml* file, using which:
-##### 1) Start your container 
-##### 2) Start the docker container with **nginx** which will proxy all requests from port 8080 to port 81 of the first container
-##### Map port 8080 of the second container to port 80 of the local machine
+- Write a mini server in **C** and **FastCgi** that will return a simple page saying `Hello World!`
+- Run the written mini server via *spawn-fcgi* on port 8080
+- Write your own *nginx.conf* that will proxy all requests from port 81 to *127.0.0.1:8080*
+- Add proxying of */status* page in *./nginx/nginx.conf* to return the **nginx** server status
+- Write a *docker-compose.yml* file, using which:
+- 1) Start your container 
+- 2) Start the docker container with **nginx** which will proxy all requests from port 8080 to port 81 of the first container
+- Map port 8080 of the second container to port 80 of the local machine
 
 
